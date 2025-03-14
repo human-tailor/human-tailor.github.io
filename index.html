@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Tailor: An Integrated Text-Driven CG-Ready Human and Garment Generation System">
+  <meta name="keywords" content="garment generation, 3D human generation, text-to-3D generation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tailor: An Integrated Text-Driven CG-Ready Human and Garment Generation System</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SWYTWD3QEX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SWYTWD3QEX');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+  <section class="hero">
+    <div class="hero-body" style="padding-top: 2em;">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Tailor: An Integrated Text-Driven CG-Ready Human and Garment
+              Generation System</h1>
+            <!-- <div class="is-size-3 publication-venue">
+            </div> -->
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code (upcoming)</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero is-light is-small teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <img src="./static/images/teaser.jpg" alt="teaser">
+        <h2 class="subtitle has-text-centered">
+          <span class="dnerf">Tailor</span> generates highly-detailed 3D human and garment models from text prompts
+          automatically.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Creating detailed 3D human avatars with garments typically requires specialized expertise and
+              labor-intensive processes. Although recent advances in generative AI have enabled text-to-3D
+              human/clothing generation, current methods fall short in offering accessible, integrated pipelines for
+              producing ready-to-use clothed avatars. To solve this, we introduce Tailor, an integrated text-to-avatar
+              system that generates high-fidelity, customizable 3D humans with simulation-ready garments. Our system
+              includes a three-stage pipeline. We first employ a large language model to interpret textual descriptions
+              into parameterized body shapes and semantically matched garment templates. Next, we develop
+              topology-preserving deformation with novel geometric losses to adapt garments precisely to body
+              geometries. Furthermore, an enhanced texture diffusion module with a symmetric local attention mechanism
+              ensures both view consistency and photorealistic details. Quantitative and qualitative evaluations
+              demonstrate that Tailor outperforms existing SoTA methods in terms of fidelity, usability, and diversity.
+              Code will be available for academic use.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+    </div>
+  </section>
+
+  <section class="hero is-light">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <!-- Method. -->
+        <div class="columns is-centered has-text-centered">
+          <div class="column">
+            <h2 class="title is-3">Method</h2>
+            <img src="./static/images/pipeline.jpg" alt="pipeline">
+            <h2 class="subtitle has-text-centered">Overview of Tailor's pipeline.</h2>
+          </div>
+        </div>
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <div class="content has-text-justified">
+              <p>
+                Tailor includes a three-stage pipeline. Given a description of a clothed human, (a) the LLM agent
+                decomposes the prompt into body and garment sub-prompts, and outputs the translated body parameters and
+                garment templates. The body parameters and garment templates are then fed into the HumGen3D generator to
+                derive highly-detailed human model and a set of roughly-aligned garments. (b) We adopt
+                topology-preserving deformation to the garment template under the guidance of both a text-to-image model
+                and geometry losses to generate body-aligned clothes. (c) We condition a multi-view image diffusion
+                model with rendered depth images and generate view-consistent images. Then, we sample texture from the
+                images and apply a refinement process to get the final texture map.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!--/ Method. -->
+      </div>
+    </div>
+  </section>
+
+  <section class="hero section">
+    <div class="container is-max-desktop has-text-centered">
+      <div class="hero-body">
+        <h2 class="title is-3">Simulation</h2>
+
+        <div class="columns is-centered">
+          <div class="column content">
+            <video id="simu1-video" autoplay controls muted loop playsinline width="90%">
+              <source src="./static/videos/simulation1.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <div class="column content">
+            <video id="simu2-video" autoplay controls muted loop playsinline width="90%">
+              <source src="./static/videos/simulation2.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero is-light">
+    <div class="container is-max-desktop has-text-centered">
+      <div class="hero-body">
+        <!-- Results. -->
+        <h2 class="title is-3">Results</h2>
+        <div class="columns is-centered">
+          <div class="column is-half">
+            <button id="play-all-videos" class="button is-primary is-medium">
+              <span class="icon">
+                <i class="fas fa-play"></i>
+              </span>
+              <span>Play All Videos</span>
+            </button>
+            <script>
+              document.getElementById('play-all-videos').addEventListener('click', function() {
+                const videoIds = Array.from({length: 12}, (_, i) => `garment${i+1}-v`);
+                const button = document.getElementById('play-all-videos');
+                const isPlaying = button.getAttribute('data-playing') === 'true';
+                
+                videoIds.forEach(id => {
+                  const video = document.getElementById(id);
+                  if (video) {
+                    if (isPlaying) {
+                      video.pause();
+                    } else {
+                      video.play();
+                    }
+                  }
+                });
+                
+                // Toggle state
+                if (isPlaying) {
+                  button.innerHTML = '<span class="icon"><i class="fas fa-play"></i></span><span>Play All Videos</span>';
+                  button.setAttribute('data-playing', 'false');
+                } else {
+                  button.innerHTML = '<span class="icon"><i class="fas fa-pause"></i></span><span>Stop All Videos</span>';
+                  button.setAttribute('data-playing', 'true');
+                }
+              });
+            </script>
+          </div>
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column content">
+            <video id="garment1-v" controls muted loop playsinline>
+              <source src="./static/videos/garments/IronManArmor.mp4" type="video/mp4">
+            </video>
+            <div>
+              <p>An Iron Man upper body armor, red and gold color scheme, with a round blue arc reactor at the chest</p>
+            </div>
+          </div>
+
+          <div class="column content">
+            <video id="garment2-v" controls muted loop playsinline>
+              <source src="./static/videos/garments/CropTop.mp4" type="video/mp4">
+            </video>
+            <div>
+              <p>A cropped tank top with the texture of light orange color with white cute flowers</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column content">
+            <video id="garment3-v" controls muted loop playsinline>
+              <source src="./static/videos/garments/HawaiianTShirt.mp4" type="video/mp4">
+            </video>
+            <div>
+              <p>A Hawaiian T-shirt</p>
+            </div>
+          </div>
+
+          <div class="column content">
+            <video id="garment4-v" controls muted loop playsinline>
+              <source src="./static/videos/garments/PufferJacket.mp4" type="video/mp4">
+            </video>
+            <div>
+              <p>An orange puffer jacket</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column content">
+            <video id="garment5-v" controls muted loop playsinline>
+              <source src="./static/videos/garments/HawaiianShorts.mp4" type="video/mp4">
+            </video>
+            <div>
+              <p>A pair of Hawaiian shorts with floral patterns</p>
+            </div>
+          </div>
+
+          <div class="column content">
+            <video id="garment6-v" controls muted loop playsinline>
+              <source src="./static/videos/garments/DenimJeans.mp4" type="video/mp4">
+            </video>
+            <div>
+              <p>A pair of blue denim jeans</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column content">
+            <video id="garment7-v" controls muted loop playsinline>
+              <source src="./static/videos/garments/LeopardDress.mp4" type="video/mp4">
+            </video>
+            <div>
+              <p>A sleeveless dress with a square neckline and wide shoulder straps, leopard print</p>
+            </div>
+          </div>
+
+          <div class="column content">
+            <video id="garment8-v" controls muted loop playsinline>
+              <source src="./static/videos/garments/RoyalDress.mp4" type="video/mp4">
+            </video>
+            <div>
+              <p>A traditional royal style dress in blue and gold</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column content">
+            <video id="garment9-v" controls muted loop playsinline>
+              <source src="./static/videos/garments/Qipao.mp4" type="video/mp4">
+            </video>
+            <div>
+              <p>A Qipao (Cheongsam) with beautiful floral patterns</p>
+            </div>
+          </div>
+
+          <div class="column content">
+            <video id="garment10-v" controls muted loop playsinline>
+              <source src="./static/videos/garments/OfficeSkirt.mp4" type="video/mp4">
+            </video>
+            <div>
+              <p>A knee-length office skirt with Van-Gogh print</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column content">
+            <video id="garment11-v" controls muted loop playsinline>
+              <source src="./static/videos/garments/MedievalArmor.mp4" type="video/mp4">
+            </video>
+            <div>
+              <p>A medieval armor</p>
+            </div>
+          </div>
+
+          <div class="column content">
+            <video id="garment12-v" controls muted loop playsinline>
+              <source src="./static/videos/garments/SpiderManSuit.mp4" type="video/mp4">
+            </video>
+            <div>
+              <p>A Spider-Man bodysuit costume</p>
+            </div>
+          </div>
+        </div>
+        <!--/ Results. -->
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+            <p>
+              The website source code is based on the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>
+              project page.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
