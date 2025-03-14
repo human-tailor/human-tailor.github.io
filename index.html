@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="Tailor: An Integrated Text-Driven CG-Ready Human and Garment Generation System">
+  <meta name="keywords" content="garment generation, 3D human generation, text-to-3D generation">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tailor: An Integrated Text-Driven CG-Ready Human and Garment Generation System</title>
+
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-SWYTWD3QEX"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'G-SWYTWD3QEX');
+  </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro" rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+  <link rel="icon" href="./static/images/favicon.svg">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+
+<body>
+
+  <nav class="navbar" role="navigation" aria-label="main navigation">
+    <div class="navbar-brand">
+      <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+        <span aria-hidden="true"></span>
+      </a>
+    </div>
+    <div class="navbar-menu">
+      <div class="navbar-start" style="flex-grow: 1; justify-content: center;">
+        <div class="navbar-item has-dropdown is-hoverable">
+          <a class="navbar-link">
+            More Research
+          </a>
+          <div class="navbar-dropdown">
+            <a class="navbar-item" href="https://diffposetalk.github.io">
+              DiffPoseTalk
+            </a>
+            <a class="navbar-item" href="https://raineggplant.github.io/FEE4TV/">
+              C^2 Facial Expression Editing in Talking Videos
+            </a>
+            <a class="navbar-item" href="./">
+              Tailor
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="hero-body" style="padding-top: 2em;">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">Tailor: An Integrated Text-Driven CG-Ready Human and Garment
+              Generation System</h1>
+            <!-- <div class="is-size-3 publication-venue">
+            </div> -->
+            <div class="is-size-5 publication-authors">
+              <span class="author-block">
+                <a href="https://github.com/RainEggplant">Zhiyao Sun</a><sup>1</sup>,
+              </span>
+              <span class="author-block">
+                Yu-Hui Wen<sup>2</sup>,
+              </span>
+              <span class="author-block">
+                Matthieu Lin<sup>1</sup>,
+              </span>
+              <span class="author-block">
+                Ho-Jui Fang<sup>1</sup>,
+              </span>
+              <span class="author-block">
+                Sheng Ye<sup>1</sup>,
+              </span>
+              <span class="author-block">
+                Tian Lv<sup>1</sup>,
+              </span>
+              <span class="author-block">
+                <a href="https://yongjinliu.github.io/">Yong-Jin Liu</a><sup>1</sup>
+              </span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="author-block"><sup>1</sup>Tsinghua University</span>
+              <span class="author-block"><sup>2</sup>Beijing Jiaotong University</span>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- PDF Link. -->
+                <span class="link-block">
+                  <a class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>arXiv</span>
+                  </a>
+                </span>
+                <!-- Code Link. -->
+                <span class="link-block">
+                  <a class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code (upcoming)</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero is-light is-small teaser">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+        <img src="./static/images/teaser.jpg" alt="teaser">
+        <h2 class="subtitle has-text-centered">
+          <span class="dnerf">Tailor</span> generates highly-detailed 3D human and garment models from text prompts
+          automatically.
+        </h2>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <!-- Abstract. -->
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-four-fifths">
+          <h2 class="title is-3">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              Creating detailed 3D human avatars with garments typically requires specialized expertise and
+              labor-intensive processes. Although recent advances in generative AI have enabled text-to-3D
+              human/clothing generation, current methods fall short in offering accessible, integrated pipelines for
+              producing ready-to-use clothed avatars. To solve this, we introduce Tailor, an integrated text-to-avatar
+              system that generates high-fidelity, customizable 3D humans with simulation-ready garments. Our system
+              includes a three-stage pipeline. We first employ a large language model to interpret textual descriptions
+              into parameterized body shapes and semantically matched garment templates. Next, we develop
+              topology-preserving deformation with novel geometric losses to adapt garments precisely to body
+              geometries. Furthermore, an enhanced texture diffusion module with a symmetric local attention mechanism
+              ensures both view consistency and photorealistic details. Quantitative and qualitative evaluations
+              demonstrate that Tailor outperforms existing SoTA methods in terms of fidelity, usability, and diversity.
+              Code will be available for academic use.
+            </p>
+          </div>
+        </div>
+      </div>
+      <!--/ Abstract. -->
+    </div>
+  </section>
+
+  <section class="hero section is-light">
+    <div class="container is-max-desktop">
+      <div class="hero-body">
+      <!-- Method. -->
+        <div class="columns is-centered has-text-centered">
+          <div class="column ">
+            <h2 class="title is-3">Method</h2>
+            <img src="./static/images/pipeline.jpg" alt="pipeline">
+            <h2 class="subtitle has-text-centered">Overview of Tailor's pipeline.</h2>
+          </div>
+        </div>
+      <!--/ Method. -->
+      </div>
+    </div>
+  </section>
+
+  <section class="hero section">
+    <div class="container is-max-desktop has-text-centered">
+      <div class="hero-body">
+        <h2 class="title is-3">Simulation</h2>
+
+        <div class="columns is-centered">
+          <div class="column">
+            <div class="content">
+              <video id="simu1-video" autoplay controls muted loop playsinline width="90%">
+                <source src="./static/videos/simulation1.mp4" type="video/mp4">
+              </video>
+            </div>
+          </div>
+
+          <div class="column">
+            <div class="columns is-centered">
+              <div class="column content">
+                <video id="simu2-video" autoplay controls playsinline width="90%">
+                  <source src="./static/videos/simulation2.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title">BibTeX</h2>
+      <pre><code></code></pre>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="columns is-centered">
+        <div class="column is-8">
+          <div class="content">
+            <p>
+              This website is licensed under a <a rel="license"
+                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
+                Commons Attribution-ShareAlike 4.0 International License</a>.
+            </p>
+            <p>
+              The website source code is based on the <a href="https://github.com/nerfies/nerfies.github.io">Nerfies</a>
+              project page.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+</body>
+
+</html>
