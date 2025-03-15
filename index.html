@@ -173,18 +173,34 @@
     </div>
   </section>
 
-  <section class="hero section is-light">
+  <section class="hero is-light">
     <div class="container is-max-desktop">
       <div class="hero-body">
-      <!-- Method. -->
+        <!-- Method. -->
         <div class="columns is-centered has-text-centered">
-          <div class="column ">
+          <div class="column">
             <h2 class="title is-3">Method</h2>
             <img src="./static/images/pipeline.jpg" alt="pipeline">
             <h2 class="subtitle has-text-centered">Overview of Tailor's pipeline.</h2>
           </div>
         </div>
-      <!--/ Method. -->
+        <div class="columns is-centered">
+          <div class="column is-four-fifths">
+            <div class="content has-text-justified">
+              <p>
+                Tailor includes a three-stage pipeline. Given a description of a clothed human, (a) the LLM agent
+                decomposes the prompt into body and garment sub-prompts, and outputs the translated body parameters and
+                garment templates. The body parameters and garment templates are then fed into the HumGen3D generator to
+                derive highly-detailed human model and a set of roughly-aligned garments. (b) We adopt
+                topology-preserving deformation to the garment template under the guidance of both a text-to-image model
+                and geometry losses to generate body-aligned clothes. (c) We condition a multi-view image diffusion
+                model with rendered depth images and generate view-consistent images. Then, we sample texture from the
+                images and apply a refinement process to get the final texture map.
+              </p>
+            </div>
+          </div>
+        </div>
+        <!--/ Method. -->
       </div>
     </div>
   </section>
@@ -195,24 +211,185 @@
         <h2 class="title is-3">Simulation</h2>
 
         <div class="columns is-centered">
-          <div class="column">
-            <div class="content">
-              <video id="simu1-video" autoplay controls muted loop playsinline width="90%">
-                <source src="./static/videos/simulation1.mp4" type="video/mp4">
-              </video>
+          <div class="column content">
+            <video id="simu1-video" autoplay controls muted loop playsinline width="90%">
+              <source src="./static/videos/simulation1.mp4" type="video/mp4">
+            </video>
+          </div>
+
+          <div class="column content">
+            <video id="simu2-video" autoplay controls muted loop playsinline width="90%">
+              <source src="./static/videos/simulation2.mp4" type="video/mp4">
+            </video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="hero is-light">
+    <div class="container is-max-desktop has-text-centered">
+      <div class="hero-body">
+        <!-- Results. -->
+        <h2 class="title is-3">Results</h2>
+        <div class="columns is-centered">
+          <div class="column is-half">
+            <button id="play-all-videos" class="button is-primary is-medium">
+              <span class="icon">
+                <i class="fas fa-play"></i>
+              </span>
+              <span>Play All Videos</span>
+            </button>
+            <script>
+              document.getElementById('play-all-videos').addEventListener('click', function() {
+                const videoIds = Array.from({length: 12}, (_, i) => `garment${i+1}-v`);
+                const button = document.getElementById('play-all-videos');
+                const isPlaying = button.getAttribute('data-playing') === 'true';
+                
+                videoIds.forEach(id => {
+                  const video = document.getElementById(id);
+                  if (video) {
+                    if (isPlaying) {
+                      video.pause();
+                    } else {
+                      video.play();
+                    }
+                  }
+                });
+                
+                // Toggle state
+                if (isPlaying) {
+                  button.innerHTML = '<span class="icon"><i class="fas fa-play"></i></span><span>Play All Videos</span>';
+                  button.setAttribute('data-playing', 'false');
+                } else {
+                  button.innerHTML = '<span class="icon"><i class="fas fa-pause"></i></span><span>Stop All Videos</span>';
+                  button.setAttribute('data-playing', 'true');
+                }
+              });
+            </script>
+          </div>
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column content">
+            <video id="garment1-v" controls muted loop playsinline>
+              <source src="./static/videos/garments/IronManArmor.mp4" type="video/mp4">
+            </video>
+            <div>
+              <p>An Iron Man upper body armor, red and gold color scheme, with a round blue arc reactor at the chest</p>
             </div>
           </div>
 
-          <div class="column">
-            <div class="columns is-centered">
-              <div class="column content">
-                <video id="simu2-video" autoplay controls playsinline width="90%">
-                  <source src="./static/videos/simulation2.mp4" type="video/mp4">
-                </video>
-              </div>
+          <div class="column content">
+            <video id="garment2-v" controls muted loop playsinline>
+              <source src="./static/videos/garments/CropTop.mp4" type="video/mp4">
+            </video>
+            <div>
+              <p>A cropped tank top with the texture of light orange color with white cute flowers</p>
             </div>
           </div>
         </div>
+
+        <div class="columns is-centered">
+          <div class="column content">
+            <video id="garment3-v" controls muted loop playsinline>
+              <source src="./static/videos/garments/HawaiianTShirt.mp4" type="video/mp4">
+            </video>
+            <div>
+              <p>A Hawaiian T-shirt</p>
+            </div>
+          </div>
+
+          <div class="column content">
+            <video id="garment4-v" controls muted loop playsinline>
+              <source src="./static/videos/garments/PufferJacket.mp4" type="video/mp4">
+            </video>
+            <div>
+              <p>An orange puffer jacket</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column content">
+            <video id="garment5-v" controls muted loop playsinline>
+              <source src="./static/videos/garments/HawaiianShorts.mp4" type="video/mp4">
+            </video>
+            <div>
+              <p>A pair of Hawaiian shorts with floral patterns</p>
+            </div>
+          </div>
+
+          <div class="column content">
+            <video id="garment6-v" controls muted loop playsinline>
+              <source src="./static/videos/garments/DenimJeans.mp4" type="video/mp4">
+            </video>
+            <div>
+              <p>A pair of blue denim jeans</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column content">
+            <video id="garment7-v" controls muted loop playsinline>
+              <source src="./static/videos/garments/LeopardDress.mp4" type="video/mp4">
+            </video>
+            <div>
+              <p>A sleeveless dress with a square neckline and wide shoulder straps, leopard print</p>
+            </div>
+          </div>
+
+          <div class="column content">
+            <video id="garment8-v" controls muted loop playsinline>
+              <source src="./static/videos/garments/RoyalDress.mp4" type="video/mp4">
+            </video>
+            <div>
+              <p>A traditional royal style dress in blue and gold</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column content">
+            <video id="garment9-v" controls muted loop playsinline>
+              <source src="./static/videos/garments/Qipao.mp4" type="video/mp4">
+            </video>
+            <div>
+              <p>A Qipao (Cheongsam) with beautiful floral patterns</p>
+            </div>
+          </div>
+
+          <div class="column content">
+            <video id="garment10-v" controls muted loop playsinline>
+              <source src="./static/videos/garments/OfficeSkirt.mp4" type="video/mp4">
+            </video>
+            <div>
+              <p>A knee-length office skirt with Van-Gogh print</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="columns is-centered">
+          <div class="column content">
+            <video id="garment11-v" controls muted loop playsinline>
+              <source src="./static/videos/garments/MedievalArmor.mp4" type="video/mp4">
+            </video>
+            <div>
+              <p>A medieval armor</p>
+            </div>
+          </div>
+
+          <div class="column content">
+            <video id="garment12-v" controls muted loop playsinline>
+              <source src="./static/videos/garments/SpiderManSuit.mp4" type="video/mp4">
+            </video>
+            <div>
+              <p>A Spider-Man bodysuit costume</p>
+            </div>
+          </div>
+        </div>
+        <!--/ Results. -->
       </div>
     </div>
   </section>
