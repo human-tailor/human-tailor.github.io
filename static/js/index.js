@@ -75,4 +75,69 @@ $(document).ready(function() {
 
     bulmaSlider.attach();
 
+    // Simulation carousel navigation
+    var currentSimulationSlide = 0;
+    var simulationContainer = document.querySelector('.simulation-carousel-container');
+    var simulationItems = document.querySelectorAll('.simulation-carousel-item');
+    var simulationVideos = document.querySelectorAll('.simulation-video');
+    var totalSimulationSlides = simulationItems.length;
+    var prevButton = document.querySelector('.carousel-prev');
+    var nextButton = document.querySelector('.carousel-next');
+    var videosPerView = 3; // Show up to 3 videos at a time
+
+    function getVideosPerView() {
+      if (window.innerWidth <= 768) {
+        return 1;
+      } else if (window.innerWidth <= 1024) {
+        return 2;
+      }
+      return 3;
+    }
+
+    function updateSimulationCarousel() {
+      if (simulationContainer && simulationItems.length > 0) {
+        videosPerView = getVideosPerView();
+        var maxSlide = Math.max(0, totalSimulationSlides - videosPerView);
+        currentSimulationSlide = Math.min(currentSimulationSlide, maxSlide);
+        
+        var itemWidth = simulationItems[0].offsetWidth + 20; // Include gap
+        var translateX = currentSimulationSlide * itemWidth;
+        simulationContainer.style.transform = `translateX(-${translateX}px)`;
+        
+        // Pause videos that are not visible
+        simulationVideos.forEach(function(video, index) {
+          if (index >= currentSimulationSlide && index < currentSimulationSlide + videosPerView) {
+            video.play();
+          } else {
+            video.pause();
+          }
+        });
+      }
+    }
+
+    if (prevButton && nextButton) {
+      prevButton.addEventListener('click', function() {
+        videosPerView = getVideosPerView();
+        currentSimulationSlide = Math.max(0, currentSimulationSlide - 1);
+        updateSimulationCarousel();
+      });
+
+      nextButton.addEventListener('click', function() {
+        videosPerView = getVideosPerView();
+        var maxSlide = Math.max(0, totalSimulationSlides - videosPerView);
+        currentSimulationSlide = Math.min(maxSlide, currentSimulationSlide + 1);
+        updateSimulationCarousel();
+      });
+    }
+
+    // Handle window resize
+    window.addEventListener('resize', function() {
+      updateSimulationCarousel();
+    });
+
+    // Initialize carousel
+    if (simulationVideos.length > 0) {
+      updateSimulationCarousel();
+    }
+
 })

@@ -154,3 +154,93 @@ body {
 #interpolation-image-wrapper img {
   border-radius: 5px;
 }
+
+.simulation-carousel-wrapper {
+  position: relative;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+.simulation-carousel {
+  overflow: hidden;
+  position: relative;
+  border-radius: 10px;
+}
+
+.simulation-carousel-container {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  gap: 20px;
+  align-items: center;
+}
+
+.simulation-carousel-item {
+  flex: 0 0 calc(33.333% - 14px);
+  min-width: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.simulation-video {
+  display: block;
+  border-radius: 10px;
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+}
+
+.carousel-nav-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  border: none;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.3s ease;
+}
+
+.carousel-nav-button:hover {
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.carousel-prev {
+  left: -50px;
+}
+
+.carousel-next {
+  right: -50px;
+}
+
+@media (max-width: 1024px) {
+  .simulation-carousel-item {
+    flex: 0 0 calc(50% - 10px);
+  }
+}
+
+@media (max-width: 768px) {
+  .carousel-prev {
+    left: 10px;
+  }
+  
+  .carousel-next {
+    right: 10px;
+  }
+  
+  .simulation-carousel-wrapper {
+    max-width: 100%;
+  }
+  
+  .simulation-carousel-item {
+    flex: 0 0 100%;
+  }
+}

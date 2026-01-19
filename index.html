@@ -218,18 +218,39 @@
       <div class="hero-body">
         <h2 class="title is-3">Simulation</h2>
 
-        <div class="columns is-centered">
-          <div class="column content">
-            <video id="simu1-video" autoplay controls muted loop playsinline width="90%">
-              <source src="./static/videos/simulation1.mp4" type="video/mp4">
-            </video>
+        <div class="simulation-carousel-wrapper">
+          <button class="carousel-nav-button carousel-prev" aria-label="Previous video">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          
+          <div class="simulation-carousel">
+            <div class="simulation-carousel-container">
+              <div class="simulation-carousel-item">
+                <video class="simulation-video" autoplay controls muted loop playsinline>
+                  <source src="./static/videos/simulation1.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="simulation-carousel-item">
+                <video class="simulation-video" autoplay controls muted loop playsinline>
+                  <source src="./static/videos/simulation2.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="simulation-carousel-item">
+                <video class="simulation-video" autoplay controls muted loop playsinline>
+                  <source src="./static/videos/simulation3.mp4" type="video/mp4">
+                </video>
+              </div>
+              <div class="simulation-carousel-item">
+                <video class="simulation-video" autoplay controls muted loop playsinline>
+                  <source src="./static/videos/simulation4.mp4" type="video/mp4">
+                </video>
+              </div>
+            </div>
           </div>
 
-          <div class="column content">
-            <video id="simu2-video" autoplay controls muted loop playsinline width="90%">
-              <source src="./static/videos/simulation2.mp4" type="video/mp4">
-            </video>
-          </div>
+          <button class="carousel-nav-button carousel-next" aria-label="Next video">
+            <i class="fas fa-chevron-right"></i>
+          </button>
         </div>
       </div>
     </div>
